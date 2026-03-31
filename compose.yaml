@@ -26,13 +26,16 @@ services:
         - path: ./app
           target: /usr/src/app
           action: sync
+      volumes:
+      - ./app:/usr/src/app
+      - /usr/src/app/node_modules
 
   todo-database:
     image: mongo:6
-    #volumes: 
-    #  - database:/data/db
+    volumes: 
+      - database:/data/db
     ports:
       - 27017:27017
 
-#volumes:
-  #database:
+volumes:
+  database:
